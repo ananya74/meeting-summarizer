@@ -8,12 +8,13 @@ import os
 import smtplib
 from email.message import EmailMessage
 from email.utils import make_msgid
+import streamlit as st
 
-SMTP_HOST = os.getenv("SMTP_HOST")
-SMTP_PORT = int(os.getenv("SMTP_PORT", "587"))
-SMTP_USERNAME = os.getenv("SMTP_USERNAME")
-SMTP_PASSWORD = os.getenv("SMTP_PASSWORD")
-SMTP_FROM = os.getenv("SMTP_FROM")
+SMTP_HOST = os.getenv("SMTP_HOST") or st.secrets.get("SMTP_HOST")
+SMTP_PORT = int(os.getenv("SMTP_PORT", st.secrets.get("SMTP_PORT", 587)))
+SMTP_USERNAME = os.getenv("SMTP_USERNAME") or st.secrets.get("SMTP_USERNAME")
+SMTP_PASSWORD = os.getenv("SMTP_PASSWORD") or st.secrets.get("SMTP_PASSWORD")
+SMTP_FROM = os.getenv("SMTP_FROM") or st.secrets.get("SMTP_FROM")
 
 def send_summary_email(to_addresses, subject, body_html, body_text=None):
     """
