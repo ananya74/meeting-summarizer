@@ -9,6 +9,10 @@ A Streamlit app that generates structured meeting summaries using an LLM (Groq),
 - Save summaries to a local SQLite DB
 - Share edited summaries via SMTP email
 
+## Live Link
+  ```bash
+    https://meeting-summarizer-transcript.streamlit.app/
+  ```
 ## Setup
 
 1. Clone repo
