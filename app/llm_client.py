@@ -6,9 +6,10 @@ Wrapper around Groq Python SDK for generating summaries.
 
 import os
 from groq import Groq
+import streamlit as st
 
 # Load API key from environment
-API_KEY = os.environ.get("GROQ_API_KEY")
+API_KEY = os.environ.get("GROQ_API_KEY") or st.secrets.get("GROQ_API_KEY")
 if not API_KEY:
     raise RuntimeError("GROQ_API_KEY not set in environment.")
 
